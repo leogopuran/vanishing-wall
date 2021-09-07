@@ -1,0 +1,100 @@
+.content-area{
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+.post-content:hover, .post-content:active{
+    visibility: visible;
+    transform: scale(1.05);
+    z-index: 1000;
+}
+
+.post-content{
+    visibility: visible;
+    transition: transform 0.2s linear 0s;
+}
+
+.post-content-bg{
+    min-height: 200px;
+}
+
+.card-img-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+}
+
+.card-columns {
+    column-count: 4;
+    -webkit-column-gap: 0.25rem;
+    -moz-column-gap: 0.25rem;
+    grid-column-gap: 0.25rem;
+    column-gap: 0.25rem;
+    orphans: 1;
+    widows: 1;
+}
+
+.card-columns .card {
+    margin-bottom: .25rem;
+    display: inline-block;
+}
+
+.card-title{
+    margin-bottom: 0.25rem;
+}
+
+.card-text{
+    font-size: 0.75rem;
+}
+
+
+/* For small mobile devices */
+@media only screen and (max-width: 330px) {
+    .card-columns {
+        column-count: 1;
+        -webkit-column-gap: 0.25rem;
+        -moz-column-gap: 0.25rem;
+        grid-column-gap: 0.25rem;
+        column-gap: 0.25rem;
+        orphans: 1;
+        widows: 1;
+    }
+}
+
+/* For mobile devices */
+@media only screen and (max-width: 600px) and (min-width: 330px) {
+    .card-columns {
+        column-count: 2;
+        -webkit-column-gap: 0.25rem;
+        -moz-column-gap: 0.25rem;
+        grid-column-gap: 0.25rem;
+        column-gap: 0.25rem;
+        orphans: 1;
+        widows: 1;
+    }
+}
+
+/* For Tablests */
+@media only screen and (max-width: 1000px) and (min-width: 600px) {
+    .card-columns {
+        column-count: 3;
+        -webkit-column-gap: 0.25rem;
+        -moz-column-gap: 0.25rem;
+        grid-column-gap: 0.25rem;
+        column-gap: 0.25rem;
+        orphans: 1;
+        widows: 1;
+    }
+}
+
+
+
+.card{
+    transition: transform 1.5s;
+}
+.cardOnUpdate:hover{
+    transform: rotateY(150deg);
+}

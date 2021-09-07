@@ -1,0 +1,11 @@
+@font-face {
+    font-family: headerFont;
+    src: url("../../assets/fonts/NothingYouCouldDo-Regular.ttf");
+  }
+
+.header-background{
+    height: 5rem;
+    background-image: linear-gradient(to bottom, #02162573, transparent);
+    backdrop-filter: blur(3px);
+    font-family: headerFont;
+}
