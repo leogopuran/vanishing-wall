@@ -23,9 +23,9 @@ public class PostDeliveryServiceImpl implements IPostDeliveryService {
             String uniqueId = UUID.randomUUID().toString();
             postDetail.setId(uniqueId);
             postDetail.setTitle("Post__" + uniqueId);
-            postDetail.setDescription("Lorem Ipsum is simply dummy text of the printing and typesetting industry.");
+            postDetail.setDescription("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.");
 
-            int max = 1000;
+            int max = 700;
             int min = 300;
 
             int imageWidth = (int)(Math.random()*(max-min+1)+min);

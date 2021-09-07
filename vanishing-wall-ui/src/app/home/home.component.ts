@@ -1,8 +1,10 @@
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { PostDetails } from '../interface/post-details';
+import { PostPreviewComponent } from '../modal/post-preview/post-preview.component';
 import { HomeService } from '../service/home.service';
 import { SocketClientService } from '../service/socket-client.service';
 
@@ -40,7 +42,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private homeService:HomeService,
-    private socketClient: SocketClientService
+    private socketClient: SocketClientService,
+    public modalService: NgbModal
   ) {}
 
   ngOnInit(): void {
@@ -58,6 +61,11 @@ export class HomeComponent implements OnInit {
         }
       }
     );
+  }
+
+  openPreview(postIndex: number) {
+    const modalRef = this.modalService.open(PostPreviewComponent, { centered:true, scrollable:true, animation:true, size:'xl'});
+    modalRef.componentInstance.postDetail = this.displayingQueue[postIndex];
   }
 
   async updateUnfilledSlots() {

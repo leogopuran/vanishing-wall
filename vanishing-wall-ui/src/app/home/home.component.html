@@ -1,7 +1,7 @@
 <div class="container-fluid ">
   <div class="card-columns content-area">
     <ng-container *ngIf="(displayingQueue); else contentLoader">
-      <div [@popOverState]="post.state" class="card bg-dark text-white post-content skeleton-loader" *ngFor="let post of displayingQueue; index as indexOfPost;">
+      <div (click)="openPreview(indexOfPost);" [@popOverState]="post.state" class="card bg-dark text-white post-content skeleton-loader" *ngFor="let post of displayingQueue; index as indexOfPost;">
         <img *ngIf="post.imageUrl;" class="card-img" [defaultImage]="defaultImage" [lazyLoad]="post.imageUrl" alt="Card image">
         <div class="card-body card-img-overlay p-0.5 d-flex flex-column justify-content-end">
           <div class="description-area">
@@ -17,7 +17,6 @@
               (event)="updatePosts($event, indexOfPost)"></countdown>
                seconds.</p>
           </div>
-          <!-- <a [href]="card.imageUrl" target="_blank" class="stretched-link"></a> -->
         </div>
       </div>
     </ng-container>

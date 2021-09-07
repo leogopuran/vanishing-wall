@@ -7,7 +7,8 @@ export const environment = {
   socket_api_url: "http://192.168.1.224:8080/ws",
   default_topic: "/topic/posts/default",
   max_post_count: 5,
-  posts_on_demand_url: "http://192.168.1.224:8080/api/getPostsOndemand"
+  posts_on_demand_url: "http://192.168.1.224:8080/api/getPostsOndemand",
+  defaultImage: "../assets/images/placeholder-img.png"
 };
 
 /*
