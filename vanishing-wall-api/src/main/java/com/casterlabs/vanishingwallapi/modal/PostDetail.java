@@ -7,6 +7,7 @@ public class PostDetail {
     private String id;
     private String title;
     private String description;
+    private String contentType;
     private String imageUrl;
     private LocalDateTime timeStamp;
     private int duration;
@@ -66,5 +67,13 @@ public class PostDetail {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public String getContentType() {
+        return contentType;
+    }
+
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
     }
 }

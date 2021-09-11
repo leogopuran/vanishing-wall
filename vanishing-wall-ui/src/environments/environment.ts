@@ -4,10 +4,11 @@
 
 export const environment = {
   production: false,
-  socket_api_url: "http://192.168.1.224:8080/ws",
+  socket_api_url: "http://192.168.1.226:8080/ws",
   default_topic: "/topic/posts/default",
   max_post_count: 5,
-  posts_on_demand_url: "http://192.168.1.224:8080/api/getPostsOndemand",
+  max_reserve_size: 50,
+  posts_on_demand_url: "http://192.168.1.226:8080/api/getPostsOndemand",
   defaultImage: "../assets/images/placeholder-img.png"
 };
 

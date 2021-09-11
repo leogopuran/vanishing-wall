@@ -1,18 +1,51 @@
-<div class="modal-header col-12 p-2">
+<!-- <div class="modal-header col-5 p-2">
     <h5 *ngIf="postDetail.title;" class="card-title col-8 text-truncate skeleton-loader">{{postDetail.id}}</h5>
-    <button type="button" class="close mr-1 text-danger" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
+</div> -->
+<div class="col-12 text-center" style="position: absolute;">
+  <button type="button" class="btn btn-outline-light close-button " (click)="activeModal.dismiss('Cross click')">
+    <span>&times;</span>
+  </button>
 </div>
 <div class="modal-body p-1 position-sticky">
     <div class="card bg-dark text-white">
-        <img *ngIf="postDetail.imageUrl;" class="card-img-top img-fluid" [defaultImage]="defaultImage" [lazyLoad]="postDetail.imageUrl" alt="Card image">
-        <div class="card-body">
+        <img *ngIf="postDetail.contentType === 'image' && postDetail.imageUrl;" class="card-img-top img-fluid" [defaultImage]="defaultImage" [lazyLoad]="postDetail.imageUrl" alt="Card image"> 
+        <div *ngIf="postDetail.contentType === 'video' && videoEncodeHtml;" [innerHTML]="videoEncodeHtml">
+        </div>
+        <vg-player *ngIf="postDetail.contentType === 'pixabay_video' && postDetail.videoUrlMedium;">
+          <vg-overlay-play></vg-overlay-play>
+          <vg-buffering></vg-buffering>
+        
+          <vg-controls>
+              <vg-play-pause></vg-play-pause>
+              <vg-playback-button></vg-playback-button>
+        
+              <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+        
+              <vg-scrub-bar>
+                  <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                  <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+              </vg-scrub-bar>
+        
+              <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>
+              <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+        
+              <vg-track-selector></vg-track-selector>
+              <vg-mute></vg-mute>
+              <vg-volume></vg-volume>
+        
+              <vg-fullscreen></vg-fullscreen>
+          </vg-controls>
+        
+          <video [vgMedia]="$any(media)" #media id="singleVideo" preload="auto" crossorigin>
+              <source src="{{postDetail.videoUrlMedium}}" type="video/mp4">
+          </video>
+        </vg-player>
+        <div class="card-body card-img-overlay">
           <div class="description-area">
-            <h5 *ngIf="postDetail.title;" class="card-title col-8 text-truncate skeleton-loader">{{postDetail.id}}</h5>
+            <h5 *ngIf="postDetail.title;" class="card-title col-8 text-truncate skeleton-loader">{{postDetail.title}}</h5>
             <p *ngIf="postDetail.description;" class="card-text skeleton-loader">{{postDetail.description}}</p>
           </div>
-          <a [href]="postDetail.imageUrl" target="_blank" class="stretched-link"></a>
+          <!-- <a [href]="postDetail.imageUrl" target="_blank" class="stretched-link"></a> -->
         </div>
     </div>
 </div>

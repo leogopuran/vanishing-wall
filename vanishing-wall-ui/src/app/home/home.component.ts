@@ -7,6 +7,7 @@ import { PostDetails } from '../interface/post-details';
 import { PostPreviewComponent } from '../modal/post-preview/post-preview.component';
 import { HomeService } from '../service/home.service';
 import { SocketClientService } from '../service/socket-client.service';
+import {VgApiService} from '@videogular/ngx-videogular/core';
 
 @Component({
   selector: 'app-home',
@@ -31,7 +32,7 @@ export class HomeComponent implements OnInit {
   displayingQueue!: PostDetails[];
   freeSlots: number[] = [];
   showDescription:boolean = false;
-  defaultImage: string = "../assets/images/placeholder-img.png";
+  defaultImage: string = "../assets/images/loader/loader-circle.svg";
   isCardUpdate = true;
   MAX_POST_LIMIT = environment.max_post_count;
   TRANSITION_SPEED = 300;
@@ -39,12 +40,17 @@ export class HomeComponent implements OnInit {
   public stompClient: any;
   public msg = [];
   newPostData!: PostDetails[];
+  api!: VgApiService;
 
   constructor(
     private homeService:HomeService,
     private socketClient: SocketClientService,
     public modalService: NgbModal
   ) {}
+
+  onPlayerReady(api: VgApiService) {
+    this.api = api;
+}
 
   ngOnInit(): void {
 

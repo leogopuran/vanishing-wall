@@ -26,3 +26,16 @@
 .modal-body .card .card-body .card-title{
     padding: 0;
 }
+
+.close-button{
+    position: absolute;
+    top: 0.5rem;
+    /* right: 0.5rem; */
+    z-index: 5000;
+    font-size: 1.45rem;
+    padding: 0;
+    margin: 0;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 3rem;
+}

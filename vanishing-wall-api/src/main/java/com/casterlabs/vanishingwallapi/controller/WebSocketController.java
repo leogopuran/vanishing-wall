@@ -51,7 +51,6 @@ public class WebSocketController {
     public void broadcastPosts() throws Exception {
         ArrayList<PostDetail> postDetails = postDeliveryService.deliverNewPost();
         template.convertAndSend(POST_DEFAULT_TOPIC, postDetails);
-//        log.info("Broadcasted {} new POST's", postDetails.size());
     }
 
     @GetMapping(value = "/api/getPostsOndemand")

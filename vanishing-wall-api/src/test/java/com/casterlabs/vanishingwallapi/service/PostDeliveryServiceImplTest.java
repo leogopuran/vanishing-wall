@@ -14,6 +14,5 @@ public class PostDeliveryServiceImplTest {
 
     @Test
     public void generateDummyPostsTest(){
-        ArrayList<PostDetail> postDetails = postDeliveryService.generateDummyPosts(5);
     }
 }

@@ -20,7 +20,7 @@ export class SocketClientService  implements OnDestroy{
   private client!: Client;
   private state!: BehaviorSubject<SocketClientState>;
   public postReserve: PostDetails[] = [];
-  // public newPostEvent: EventEmitter<PostDetails[]> = new EventEmitter<PostDetails[]>();
+  private max_reserve_size: number = environment.max_reserve_size;
 
   private websocket_api_url = environment.socket_api_url;
   private postsDefaultTopic = environment.default_topic;
@@ -34,9 +34,13 @@ export class SocketClientService  implements OnDestroy{
       this.client.subscribe(this.postsDefaultTopic, responseData => {
         console.log("Total Posts in reserve - " + this.postReserve.length);
         let broadcastedPosts: PostDetails[] = JSON.parse(responseData.body);
-        broadcastedPosts.forEach((element: PostDetails) => {
-          this.postReserve.push(element);
-        });
+        if(this.postReserve.length < this.max_reserve_size){
+          broadcastedPosts.forEach((element: PostDetails) => {
+            if(this.postReserve.length < this.max_reserve_size){
+              this.postReserve.push(element);
+            }
+          });
+        }
       });
     });
   }

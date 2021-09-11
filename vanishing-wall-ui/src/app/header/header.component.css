@@ -4,8 +4,54 @@
   }
 
 .header-background{
-    height: 5rem;
+    height: 4rem;
     background-image: linear-gradient(to bottom, #02162573, transparent);
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(25px);
     font-family: headerFont;
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
+
+.headerText{
+  font-size: 3rem;
+}
+
+/* For small mobile devices */
+@media only screen and (max-width: 576px) {
+  .header-background{
+    height: 2rem;
+  }
+  .headerText{
+    font-size: 1.5rem;
+  }
+}
+
+/* For mobile devices */
+@media only screen and (max-width: 768px) and (min-width: 576px) {
+  .header-background{
+    height: 3rem;
+  }
+  .headerText{
+    font-size: 2rem;
+  }
+}
+
+/* For Tablests */
+@media only screen and (max-width: 992px) and (min-width: 768px) {
+  .header-background{
+    height: 4rem;
+  }
+  .headerText{
+    font-size: 2.5rem;
+  }
+}
+
+/* For Tablests */
+@media only screen and (max-width: 1200px) and (min-width: 992px) {
+  .header-background{
+    height: 4rem;
+  }
+  .headerText{
+    font-size: 3rem;
+  }
 }
