@@ -9,6 +9,7 @@ public class PostDetail {
     private String description;
     private String contentType;
     private String imageUrl;
+    private String mediaUrl;
     private LocalDateTime timeStamp;
     private int duration;
     private String state;
@@ -75,5 +76,13 @@ public class PostDetail {
 
     public void setContentType(String contentType) {
         this.contentType = contentType;
+    }
+
+    public String getMediaUrl() {
+        return mediaUrl;
+    }
+
+    public void setMediaUrl(String mediaUrl) {
+        this.mediaUrl = mediaUrl;
     }
 }

@@ -9,6 +9,7 @@ export const environment = {
   max_post_count: 5,
   max_reserve_size: 50,
   posts_on_demand_url: "http://192.168.1.226:8080/api/getPostsOndemand",
+  post_create_url: "http://192.168.1.226:8080/api/createNewPost",
   defaultImage: "../assets/images/placeholder-img.png"
 };
 

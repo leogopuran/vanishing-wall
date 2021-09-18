@@ -15,7 +15,7 @@ export interface Message {
 })
 export class HomeService {
 
-  sendPostEndpoint: string = "/app/chat";
+  sendPostEndpoint: string = "/app/vw/createPost";
   recievePostEndpoint: string = "/topic/messages";
   maxBufferSize = environment.max_post_count;
 
@@ -23,38 +23,6 @@ export class HomeService {
     private socketClient: SocketClientService,
     private httpClient: HttpClient
   ) {}
-
-  // generatePostsForDisplay(currentPostDetails: PostDetails[], newPostDetails: PostDetails[]): Observable<PostDetails[]> {
-  //   let postDetailsForDisplay: PostDetails[] = [];
-  //   if(currentPostDetails){
-  //     postDetailsForDisplay = currentPostDetails;
-  //   }
-  //   let newPostCount = 0;
-  //   if(newPostDetails){
-  //     newPostDetails.forEach((post) => {
-  //       if(postDetailsForDisplay.length < this.maxBufferSize){
-  //         postDetailsForDisplay.push(post);
-  //         newPostCount = newPostCount + 1;
-  //       }
-  //     });
-  //   }
-  //   // postDetailsForDisplay = this.sortPostOrder(postDetailsForDisplay);
-  //   console.log("Added " + newPostCount + " new posts.");
-  //   return of(postDetailsForDisplay);
-  // }
-
-  sortPostOrder(postDetailsToSort: PostDetails[]): PostDetails[]{
-    postDetailsToSort.sort((n1,n2) => {
-      if(n1.duration < n2.duration){
-        return -1;
-      }
-      if(n1.duration > n2.duration){
-        return 1;
-      }
-      return 0;
-    });
-    return postDetailsToSort;
-  }
 
   public sendPost(payLoad?:any){
     let postDetails ={

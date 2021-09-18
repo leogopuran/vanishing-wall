@@ -1,0 +1,47 @@
+<div class="container-fluid p-5">
+    <!-- <div class="jumbotron col-md-10 col-sm-8 offset-md-1 offset-sm-2 my-auto py-3"> -->
+        <h4 class="lead col-12 text-center">Add your post details</h4>
+        <div *ngIf="newlyCreatedPost" class="alert alert-success" role="alert">
+          Your post has been successfully published. Please click on the link <a href="#" class="alert-link">{{postDetails.title}}</a> to view your post.
+        </div>
+        <form #createPostForm="ngForm" (ngSubmit)="onFormSubmit(createPostForm.value)">
+            <div class="form-group">
+              <label for="post_title">Title</label>
+              <input type="text" class="form-control" required name="title" id="post_title" placeholder="Title for your post" ngModel #title="ngModel">
+              <div *ngIf="title.invalid && title.touched" class="alert alert-danger mt-1 p-1" role="alert">Title is required.</div>
+            </div>
+            <div class="form-group">
+              <label for="post_duration">Duration</label>
+              <input type="text" class="form-control" required name="duration" id="post_duration" placeholder="Duration" ngModel #duration="ngModel">
+              <div *ngIf="duration.invalid && duration.touched" class="alert alert-danger mt-1 p-1" role="alert">Duration is required.</div>
+            </div>
+            <div class="form-group">
+              <label for="post_type">Type</label><br>
+              <div class="row col-6">
+                <div class="form-check col-6">
+                    <label class="form-check-label"> 
+                      <input type="radio" class="form-check-input" value="image" name="contentType" ngModel>Image
+                    </label>
+                </div>
+                <div class="form-check col-6">
+                    <label class="form-check-label">
+                      <input type="radio" class="form-check-input" value="video" name="contentType" ngModel>Video
+                    </label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="post_url">Media Url</label>
+                <input type="text" class="form-control" required id="post_url" name="mediaUrl" placeholder="Add your media url" ngModel #mediaUrl="ngModel">
+                <div *ngIf="mediaUrl.invalid && mediaUrl.touched" class="alert alert-danger mt-1 p-1" role="alert">Media Url is required.</div>
+            </div>
+            <div class="form-group">
+              <label for="post_description">Description</label>
+              <textarea class="form-control" id="post_description" name="description" placeholder="Describe your post" ngModel rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <button [disabled]="!createPostForm.valid" type="submit" class="col-4 offset-4 btn btn-danger btn-lg">Post it</button>
+            </div>
+        </form>
+    <!-- </div>  -->
+</div>

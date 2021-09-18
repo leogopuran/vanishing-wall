@@ -16,13 +16,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PostPreviewComponent } from './modal/post-preview/post-preview.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CreatePostComponent } from './create-post/create-post.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    PostPreviewComponent
+    PostPreviewComponent,
+    CreatePostComponent
   ],
   imports: [
     BrowserModule,

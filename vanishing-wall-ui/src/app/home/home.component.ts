@@ -1,13 +1,13 @@
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Observable, of } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from 'src/environments/environment';
 import { PostDetails } from '../interface/post-details';
 import { PostPreviewComponent } from '../modal/post-preview/post-preview.component';
 import { HomeService } from '../service/home.service';
 import { SocketClientService } from '../service/socket-client.service';
 import {VgApiService} from '@videogular/ngx-videogular/core';
+import { CreatePostComponent } from '../create-post/create-post.component';
 
 @Component({
   selector: 'app-home',
@@ -70,8 +70,19 @@ export class HomeComponent implements OnInit {
   }
 
   openPreview(postIndex: number) {
-    const modalRef = this.modalService.open(PostPreviewComponent, { centered:true, scrollable:true, animation:true, size:'xl'});
+    const modalRef = this.modalService.open(PostPreviewComponent, { centered:true, animation:true});
     modalRef.componentInstance.postDetail = this.displayingQueue[postIndex];
+  }
+
+  openCreatePostForm() {
+    const modalRef = this.modalService.open(CreatePostComponent, { centered:true, animation:true});
+
+    //Load newly added posts
+    modalRef.componentInstance.newPostCreatedEvent.subscribe(
+      (newlyCreatedPost: PostDetails) => {
+        this.socketClient.postReserve.push(newlyCreatedPost);
+      }
+    );
   }
 
   async updateUnfilledSlots() {
@@ -79,7 +90,7 @@ export class HomeComponent implements OnInit {
       while(this.freeSlots && this.freeSlots.length > 0 && this.socketClient.postReserve.length > 0){
         let slotToBeFilled = this.freeSlots.shift()!;
         this.displayingQueue[slotToBeFilled] = this.socketClient.postReserve.pop()!;
-        
+
         await delay(this.TRANSITION_SPEED);
         this.displayingQueue[slotToBeFilled].state="show";
       }
@@ -89,7 +100,6 @@ export class HomeComponent implements OnInit {
   async updatePosts(event:any, index: number) {
     if(event.action === 'notify'){
       await delay(2000);
-      console.log("replacing post..!");
       this.displayingQueue[index].state = "hide";
       await delay(this.TRANSITION_SPEED);
       this.freeSlots.push(index);
